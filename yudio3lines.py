@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
+from PIL import Image, ImageTk  # Import Image and ImageTk for displaying the logo
 from pytube import YouTube
 import os
 import certifi
@@ -48,7 +49,16 @@ def download_audio():
 # Set up the GUI
 app = tk.Tk()
 app.title("YouTube Audio Downloader")
-app.geometry("400x300")
+app.geometry("400x400")
+
+# Load and display the logo
+logo_path = "Yudio.png"  # Path to the uploaded logo
+logo_image = Image.open(logo_path)
+logo_image = logo_image.resize((150, 150), Image.LANCZOS)  # Resize if necessary
+logo_photo = ImageTk.PhotoImage(logo_image)
+logo_label = tk.Label(app, image=logo_photo)
+logo_label.pack(pady=10)
+
 
 # URL input fields
 tk.Label(app, text="YouTube URL 1:").pack(pady=2)
